@@ -18,6 +18,8 @@
 		30550CC32BC14D7900D51876 /* ChatworkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30550CC22BC14D7900D51876 /* ChatworkUITestsLaunchTests.swift */; };
 		3085EEDF2BC2555F00554A5D /* ChatList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3085EEDE2BC2555F00554A5D /* ChatList.storyboard */; };
 		3085EEE12BC26DD300554A5D /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EEE02BC26DD300554A5D /* ChatListViewController.swift */; };
+		3097B9522BC2D5D0005F270B /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3097B9512BC2D5CF005F270B /* Chat.storyboard */; };
+		3097B9542BC2DE2B005F270B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3097B9532BC2DE2B005F270B /* ChatViewController.swift */; };
 		89113D0F2BC279DA003ED248 /* ChatworkAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D0E2BC279DA003ED248 /* ChatworkAPIProvider.swift */; };
 		89113D112BC27B67003ED248 /* ChatworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D102BC27B67003ED248 /* ChatworkModel.swift */; };
 		89113D142BC284E9003ED248 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 89113D132BC284E9003ED248 /* CombineMoya */; };
@@ -61,6 +63,8 @@
 		30550CC22BC14D7900D51876 /* ChatworkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatworkUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3085EEDE2BC2555F00554A5D /* ChatList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatList.storyboard; sourceTree = "<group>"; };
 		3085EEE02BC26DD300554A5D /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		3097B9512BC2D5CF005F270B /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		3097B9532BC2DE2B005F270B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		89113D0E2BC279DA003ED248 /* ChatworkAPIProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatworkAPIProvider.swift; sourceTree = "<group>"; };
 		89113D102BC27B67003ED248 /* ChatworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatworkModel.swift; sourceTree = "<group>"; };
 		89113D1D2BC287D0003ED248 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 			children = (
 				30550CA52BC14D7700D51876 /* Login.storyboard */,
 				3085EEDE2BC2555F00554A5D /* ChatList.storyboard */,
+				3097B9512BC2D5CF005F270B /* Chat.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 			children = (
 				30550CA32BC14D7700D51876 /* LoginViewController.swift */,
 				3085EEE02BC26DD300554A5D /* ChatListViewController.swift */,
+				3097B9532BC2DE2B005F270B /* ChatViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 				30550CA92BC14D7800D51876 /* Assets.xcassets in Resources */,
 				30550CAC2BC14D7800D51876 /* Base in Resources */,
 				3085EEDF2BC2555F00554A5D /* ChatList.storyboard in Resources */,
+				3097B9522BC2D5D0005F270B /* Chat.storyboard in Resources */,
 				30550CA72BC14D7700D51876 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,6 +340,7 @@
 				30550CA02BC14D7700D51876 /* AppDelegate.swift in Sources */,
 				3085EEE12BC26DD300554A5D /* ChatListViewController.swift in Sources */,
 				30550CA22BC14D7700D51876 /* SceneDelegate.swift in Sources */,
+				3097B9542BC2DE2B005F270B /* ChatViewController.swift in Sources */,
 				89113D1E2BC287D0003ED248 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
