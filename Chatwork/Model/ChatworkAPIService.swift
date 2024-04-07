@@ -6,10 +6,10 @@ enum GithubError: Error {
 }
 
 enum ChatworkAPIService {
-    case me(token: String)
-    case my
-    case contacts
-    case rooms
+    case me(apiToken: String)
+    case my(apiToken: String)
+    case contacts(apiToken: String)
+    case rooms(apiToken: String)
 }
 
 extension ChatworkAPIService: TargetType {
@@ -56,15 +56,9 @@ extension ChatworkAPIService: TargetType {
 //        return headers
 //        return ["X-ChatWorkToken": token]
         switch self {
-        case let .me(token):
-            let headers: [String : String]? = ["Content-type": "application/json", "X-ChatWorkToken": token]
-            return headers
-        case .my:
-            return .none
-        case .contacts:
-            return .none
-        case .rooms:
-            return .none
+        case .me(let apiToken), .my(let apiToken), .contacts(let apiToken), .rooms(let apiToken):
+            return ["accept": "application/json",
+                    "x-chatworktoken": apiToken]
         }
     }
 }

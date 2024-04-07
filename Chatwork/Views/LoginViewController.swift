@@ -5,8 +5,20 @@ class LoginViewController: UIViewController {
     let apiToken: String = "6222c8e21f1c4f6905a0da78e5804ceb"
     @IBOutlet weak var tokenTextField: UITextField!
 
-    @IBAction func LoginTappedButton(_ sender: UIButton) {
+    @IBAction func LoginButtonTapped(_ sender: UIButton) {
         print(tokenTextField!)
+        ChatworkAPIProvider.shared.api(.me(apiToken: apiToken)) { result in
+            switch result {
+            case .success(let data):
+//                self?.data = data
+                print("data: \(data)")
+                let storyboard: UIStoryboard = UIStoryboard(name: "ChatList", bundle: nil)//遷移先のStoryboardを設定
+                   let navigationController = storyboard.instantiateViewController(withIdentifier: "chatList") as! UINavigationController//遷移先のNavigationControllerを設定
+                   self.present(navigationController, animated: true, completion: nil)//遷移する
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
     }
     
 
@@ -14,15 +26,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
 //        ChatworkAPIProvider.shared.sendMessage(message: message)
-        ChatworkAPIProvider.shared.api(.me(token: apiToken)) { [weak self] result in
-            switch result {
-            case .success(let data):
-//                self?.data = data
-                print("data: \(data)")
-            case .failure(let error):
-                print("Error: \(error)")
-            }
-        }
+        
         tokenTextField.delegate = self
         setDismissKeyboard()
     }
