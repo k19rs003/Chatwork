@@ -6,7 +6,7 @@ enum GithubError: Error {
 }
 
 enum ChatworkAPIService {
-    case me
+    case me(token: String)
     case my
     case contacts
     case rooms
@@ -40,20 +40,31 @@ extension ChatworkAPIService: TargetType {
     var task: Moya.Task {
         switch self {
         case .me:
-            
-            let apiToken = "6222c8e21f1c4f6905a0da78e5804ceb"
-            return .requestParameters(parameters: ["q": city, "apiToken": apiToken, "units": unit, "lang": lang], encoding: URLEncoding.queryString)
+            return .requestPlain
         case .my:
-            break
+            return .requestPlain
         case .contacts:
-            break
+            return .requestPlain
         case .rooms:
-            break
+            return .requestPlain
         }
     }
 
     var headers: [String : String]? {
-        return ["Content-type": "application/json"]
+//        let headers: [String : String]? = ["Content-type": "application/json", "X-ChatWorkToken": token]
+//        return ["Content-type": "application/json", "X-ChatWorkToken": token]
+//        return headers
 //        return ["X-ChatWorkToken": token]
+        switch self {
+        case let .me(token):
+            let headers: [String : String]? = ["Content-type": "application/json", "X-ChatWorkToken": token]
+            return headers
+        case .my:
+            return .none
+        case .contacts:
+            return .none
+        case .rooms:
+            return .none
+        }
     }
 }

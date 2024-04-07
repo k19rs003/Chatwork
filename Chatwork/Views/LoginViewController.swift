@@ -2,6 +2,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     var message = "もえぞう"
+    let apiToken: String = "6222c8e21f1c4f6905a0da78e5804ceb"
     @IBOutlet weak var tokenTextField: UITextField!
 
     @IBAction func LoginTappedButton(_ sender: UIButton) {
@@ -12,7 +13,16 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ChatworkAPIProvider.shared.sendMessage(message: message)
+//        ChatworkAPIProvider.shared.sendMessage(message: message)
+        ChatworkAPIProvider.shared.api(.me(token: apiToken)) { [weak self] result in
+            switch result {
+            case .success(let data):
+//                self?.data = data
+                print("data: \(data)")
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
         tokenTextField.delegate = self
         setDismissKeyboard()
     }
