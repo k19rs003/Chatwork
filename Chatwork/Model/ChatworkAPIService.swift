@@ -13,8 +13,6 @@ enum ChatworkAPIService {
 }
 
 extension ChatworkAPIService: TargetType {
-    //    private let roomId: String = "357128147"
-    //    private let messageFormat: String = "/rooms/%@/messages"
     var baseURL: URL {
         guard let url = URL(string: "https://api.chatwork.com/v2") else { fatalError() }
         return url
@@ -51,10 +49,6 @@ extension ChatworkAPIService: TargetType {
     }
 
     var headers: [String : String]? {
-//        let headers: [String : String]? = ["Content-type": "application/json", "X-ChatWorkToken": token]
-//        return ["Content-type": "application/json", "X-ChatWorkToken": token]
-//        return headers
-//        return ["X-ChatWorkToken": token]
         switch self {
         case .me(let apiToken), .my(let apiToken), .contacts(let apiToken), .rooms(let apiToken):
             return ["accept": "application/json",

@@ -77,7 +77,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="チャット一覧" id="BPJ-Y1-2qC"/>
                     <connections>
-                        <outlet property="ChatListTableView" destination="2lM-XG-itI" id="MQP-Uh-s6P"/>
+                        <outlet property="chatListTableView" destination="2lM-XG-itI" id="1wk-Ov-XNF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
