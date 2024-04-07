@@ -53,3 +53,31 @@ struct RoomsModel: Codable {
         case lastUpdateTime = "last_update_time"
     }
 }
+
+struct MessagesModel: Codable {
+    let messageId: String
+    let account: Account
+    let body: String
+    let sendTime: Int
+    let updateTime: Int
+
+    enum CodingKeys: String, CodingKey {
+        case messageId = "message_id"
+        case account
+        case body
+        case sendTime = "send_time"
+        case updateTime = "update_time"
+    }
+}
+
+struct Account: Codable {
+    let accountId: Int
+    let name: String
+    let avatarImageUrl: URL
+
+    enum CodingKeys: String, CodingKey {
+        case accountId = "account_id"
+        case name
+        case avatarImageUrl = "avatar_image_url"
+    }
+}

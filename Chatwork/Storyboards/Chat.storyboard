@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7oR-wL-Ck4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
@@ -11,13 +11,13 @@
         <!--チャット-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="ChatViewController" customModule="Chatwork" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Chat" id="Y6W-OH-hqX" customClass="ChatViewController" customModule="Chatwork" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="m5F-DK-muQ">
-                                <rect key="frame" x="0.0" y="111" width="393" height="621.66666666666663"/>
+                                <rect key="frame" x="0.0" y="67" width="393" height="665.66666666666663"/>
                                 <color key="backgroundColor" name="ImageColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="70" id="iUK-xY-vEF">
@@ -105,29 +105,13 @@
                             <constraint firstItem="AnG-iS-2u0" firstAttribute="top" secondItem="m5F-DK-muQ" secondAttribute="bottom" id="zWv-0b-4u3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="チャット" id="7rU-u4-iYJ"/>
+                    <navigationItem key="navigationItem" title="チャット" id="7rU-u4-iYJ">
+                        <barButtonItem key="backBarButtonItem" id="E7N-e5-ZJL"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="901.52671755725191" y="3.5211267605633805"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="slW-aK-SxL">
-            <objects>
-                <navigationController storyboardIdentifier="Chat" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="7oR-wL-Ck4" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tXK-vu-2Ox">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Pc2-cT-xcq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JTt-kq-taJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-25.190839694656489" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>

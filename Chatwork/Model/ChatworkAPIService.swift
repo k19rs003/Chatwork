@@ -10,6 +10,7 @@ enum ChatworkAPIService {
     case my(apiToken: String)
     case contacts(apiToken: String)
     case rooms(apiToken: String)
+    case messages(roomId: Int, apiToken: String)
 }
 
 extension ChatworkAPIService: TargetType {
@@ -28,6 +29,8 @@ extension ChatworkAPIService: TargetType {
             return "/contacts"
         case .rooms:
             return "/rooms"
+        case .messages(let roomId, _):
+            return "/rooms/\(roomId)/messages?force=1"
         }
     }
 
@@ -36,21 +39,12 @@ extension ChatworkAPIService: TargetType {
     }
 
     var task: Moya.Task {
-        switch self {
-        case .me:
-            return .requestPlain
-        case .my:
-            return .requestPlain
-        case .contacts:
-            return .requestPlain
-        case .rooms:
-            return .requestPlain
-        }
+        return .requestPlain
     }
 
     var headers: [String : String]? {
         switch self {
-        case .me(let apiToken), .my(let apiToken), .contacts(let apiToken), .rooms(let apiToken):
+        case .me(let apiToken), .my(let apiToken), .contacts(let apiToken), .rooms(let apiToken), .messages(_, let apiToken):
             return ["accept": "application/json",
                     "x-chatworktoken": apiToken]
         }
