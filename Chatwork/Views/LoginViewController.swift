@@ -1,14 +1,25 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
-//    let apiToken: String = "ba742aa3fb5857250e4f0cfe89824150"
     @IBOutlet weak var tokenTextField: UITextField! {
         didSet {
             tokenTextField.delegate = self
         }
     }
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        ChatworkAPIProvider.shared.api(.rooms(apiToken: apiToken), modelType: [RoomsModel].self) { result in
+            switch result {
+            case .success(let data):
+                print("ROOMS: \(data)")
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         if let _ = UserDefaults.standard.string(forKey: "apiToken") {
             print("Logged in!")
@@ -26,8 +37,7 @@ class LoginViewController: UIViewController {
         guard let apiToken = tokenTextField.text else {
             return
         }
-        
-        ChatworkAPIProvider.shared.api(.me(apiToken: apiToken)) { result in
+        ChatworkAPIProvider.shared.api(.me(apiToken: apiToken), modelType: MeModel.self) { result in
             switch result {
             case .success(let data):
                 
