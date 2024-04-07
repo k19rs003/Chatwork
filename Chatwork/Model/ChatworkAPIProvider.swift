@@ -50,7 +50,6 @@ final class ChatworkAPIProvider: MoyaProvider<ChatworkAPIService> {
                          completion: @escaping (Result<T, Error>) -> ()) {
         self.request(target) { result in
             let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
 
             switch result {
             case let .success(response):
@@ -61,7 +60,8 @@ final class ChatworkAPIProvider: MoyaProvider<ChatworkAPIService> {
                     completion(.failure(error))
                 }
             case let .failure(error):
-                completion(.failure(error))
+                let apiError = self.mapErrorCodeToAPIError(error.errorCode)
+                completion(.failure(apiError))
             }
         }
     }
@@ -81,8 +81,24 @@ final class ChatworkAPIProvider: MoyaProvider<ChatworkAPIService> {
                     completion(.failure(error))
                 }
             case let .failure(error):
-                completion(.failure(error))
+                let apiError = self.mapErrorCodeToAPIError(error.errorCode)
+                completion(.failure(apiError))
             }
+        }
+    }
+
+    private func mapErrorCodeToAPIError(_ errorCode: Int) -> APIError {
+        switch errorCode {
+        case 400:
+            return .invalidRequest
+        case 401:
+            return .invalidAPIToken
+        case 403:
+            return .permissionError
+        case 429:
+            return .RateLimitExceeded
+        default:
+            return .unknownError
         }
     }
 }
