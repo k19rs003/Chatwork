@@ -45,8 +45,9 @@ final class ChatworkAPIProvider: MoyaProvider<ChatworkAPIService> {
     static let shared = ChatworkAPIProvider()
 
     // MARK: - API
-    func api(_ target: ChatworkAPIService,
-             completion: @escaping (Result<ChatworkModel, Error>) -> ()) {
+    func api<T: Codable>(_ target: ChatworkAPIService, 
+                         modelType: T.Type,
+                         completion: @escaping (Result<T, Error>) -> ()) {
         self.request(target) { result in
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -54,7 +55,7 @@ final class ChatworkAPIProvider: MoyaProvider<ChatworkAPIService> {
             switch result {
             case let .success(response):
                 do {
-                    let data = try decoder.decode(ChatworkModel.self, from: response.data)
+                    let data = try decoder.decode(T.self, from: response.data)
                     completion(.success(data))
                 } catch(let error) {
                     completion(.failure(error))
@@ -65,38 +66,23 @@ final class ChatworkAPIProvider: MoyaProvider<ChatworkAPIService> {
         }
     }
 
-    // MARK: - Promise
-//    func api(target: ChatworkModel) -> Promise<Repositories> {
-//        .init { fulfill, reject in
-//            self.request(target) { result in
-//                let decoder = JSONDecoder()
-//                decoder.keyDecodingStrategy = .convertFromSnakeCase
-//
-//                switch result {
-//                case let .success(response):
-//                    do {
-//                        let data = try decoder.decode(Repositories.self, from: response.data)
-//                        fulfill(data)
-//                    } catch(let error) {
-//                        reject(error)
-//                    }
-//                case let .failure(error):
-//                    switch error.errorCode {
-//                    case 403:
-//                        reject(APIError.accessDenied)
-//                        print("accessDenied: \(APIError.accessDenied.description)")
-//                    case 404:
-//                        reject(APIError.notFoundError)
-//                        print("accessDenied: \(APIError.notFoundError.description)")
-//                    case 422:
-//                        reject(APIError.validationError)
-//                        print("accessDenied: \(APIError.validationError.description)")
-//                    default:
-//                        reject(APIError.unknownError)
-//                        print("accessDenied: \(APIError.unknownError.description)")
-//                    }
-//                }
-//            }
-//        }
-//    }
+    func api<T: Codable>(_ target: ChatworkAPIService,
+                         modelType: [T].Type,
+                         completion: @escaping (Result<[T], Error>) -> ()) {
+        self.request(target) { result in
+            let decoder = JSONDecoder()
+
+            switch result {
+            case let .success(response):
+                do {
+                    let data = try decoder.decode([T].self, from: response.data)
+                    completion(.success(data))
+                } catch(let error) {
+                    completion(.failure(error))
+                }
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
