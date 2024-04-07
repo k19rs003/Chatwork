@@ -21,7 +21,7 @@
 		3097B9522BC2D5D0005F270B /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3097B9512BC2D5CF005F270B /* Chat.storyboard */; };
 		3097B9542BC2DE2B005F270B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3097B9532BC2DE2B005F270B /* ChatViewController.swift */; };
 		89113D0F2BC279DA003ED248 /* ChatworkAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D0E2BC279DA003ED248 /* ChatworkAPIProvider.swift */; };
-		89113D112BC27B67003ED248 /* ChatworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D102BC27B67003ED248 /* ChatworkModel.swift */; };
+		89113D112BC27B67003ED248 /* MeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D102BC27B67003ED248 /* MeModel.swift */; };
 		89113D142BC284E9003ED248 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 89113D132BC284E9003ED248 /* CombineMoya */; };
 		89113D162BC284E9003ED248 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 89113D152BC284E9003ED248 /* Moya */; };
 		89113D182BC284E9003ED248 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 89113D172BC284E9003ED248 /* ReactiveMoya */; };
@@ -66,7 +66,7 @@
 		3097B9512BC2D5CF005F270B /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		3097B9532BC2DE2B005F270B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		89113D0E2BC279DA003ED248 /* ChatworkAPIProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatworkAPIProvider.swift; sourceTree = "<group>"; };
-		89113D102BC27B67003ED248 /* ChatworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatworkModel.swift; sourceTree = "<group>"; };
+		89113D102BC27B67003ED248 /* MeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeModel.swift; sourceTree = "<group>"; };
 		89113D1D2BC287D0003ED248 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		89113D1F2BC288A5003ED248 /* ChatworkAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatworkAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,7 +184,7 @@
 		89113D1C2BC28767003ED248 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				89113D102BC27B67003ED248 /* ChatworkModel.swift */,
+				89113D102BC27B67003ED248 /* MeModel.swift */,
 				89113D0E2BC279DA003ED248 /* ChatworkAPIProvider.swift */,
 				89113D1F2BC288A5003ED248 /* ChatworkAPIService.swift */,
 			);
@@ -335,7 +335,7 @@
 			files = (
 				30550CA42BC14D7700D51876 /* LoginViewController.swift in Sources */,
 				89113D202BC288A5003ED248 /* ChatworkAPIService.swift in Sources */,
-				89113D112BC27B67003ED248 /* ChatworkModel.swift in Sources */,
+				89113D112BC27B67003ED248 /* MeModel.swift in Sources */,
 				89113D0F2BC279DA003ED248 /* ChatworkAPIProvider.swift in Sources */,
 				30550CA02BC14D7700D51876 /* AppDelegate.swift in Sources */,
 				3085EEE12BC26DD300554A5D /* ChatListViewController.swift in Sources */,
