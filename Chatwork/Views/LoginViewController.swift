@@ -3,7 +3,23 @@ import UIKit
 class LoginViewController: UIViewController {
     
 //    let apiToken: String = "ba742aa3fb5857250e4f0cfe89824150"
-    @IBOutlet weak var tokenTextField: UITextField!
+    @IBOutlet weak var tokenTextField: UITextField! {
+        didSet {
+            tokenTextField.delegate = self
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = UserDefaults.standard.string(forKey: "apiToken") {
+            print("Logged in!")
+            //遷移先のStoryboardを設定
+            let storyboard: UIStoryboard = UIStoryboard(name: "ChatList", bundle: nil)
+            //遷移先のNavigationControllerを設定
+            let navigationController = storyboard.instantiateViewController(withIdentifier: "chatList") as! UINavigationController
+            self.present(navigationController, animated: true, completion: nil)
+        }
+        setDismissKeyboard()
+    }
 
     @IBAction func LoginButtonTapped(_ sender: UIButton) {
         print(tokenTextField!)
@@ -31,14 +47,6 @@ class LoginViewController: UIViewController {
     }
     
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-//        ChatworkAPIProvider.shared.sendMessage(message: message)
-        
-        tokenTextField.delegate = self
-        setDismissKeyboard()
-    }
 }
 
 extension LoginViewController: UITextFieldDelegate {
@@ -57,15 +65,3 @@ extension LoginViewController: UITextFieldDelegate {
           self.view.endEditing(true)
       }
 }
-
-//extension LoginViewController: UIViewController {
-//    func hideKeyboardWhenTappedAround() {
-//            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.hideKeyboard))
-//            tap.cancelsTouchesInView = false
-//            view.addGestureRecognizer(tap)
-//        }
-//
-//        @objc func hideKeyboard() {
-//            view.endEditing(true)
-//        }
-//}
