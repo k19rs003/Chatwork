@@ -6,8 +6,19 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        chatListTableView.delegate = self
-        chatListTableView.dataSource = self
+        getRooms()
+    }
+
+    private func getRooms() {
+        guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else { return }
+        ChatworkAPIProvider.shared.api(.rooms(apiToken: apiToken), modelType: [RoomsModel].self) { result in
+            switch result {
+            case .success(let data):
+                print("ROOMS: \(data)")
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

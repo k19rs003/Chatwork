@@ -10,14 +10,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ChatworkAPIProvider.shared.api(.rooms(apiToken: apiToken), modelType: [RoomsModel].self) { result in
-            switch result {
-            case .success(let data):
-                print("ROOMS: \(data)")
-            case .failure(let error):
-                print("Error: \(error)")
-            }
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
