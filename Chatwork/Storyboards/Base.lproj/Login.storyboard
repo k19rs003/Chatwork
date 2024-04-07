@@ -23,7 +23,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLG-l9-DAR" userLabel="Top View">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="253"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Xtl-9M-089">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChatworkLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Xtl-9M-089">
                                                 <rect key="frame" x="39.333333333333343" y="-53.333333333333343" width="314.33333333333326" height="360"/>
                                             </imageView>
                                         </subviews>
@@ -55,6 +55,9 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="ログイン">
                                                     <fontDescription key="titleFontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="18"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="LoginTappedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S3C-ae-J2s"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -96,7 +99,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="loginButton" destination="3m7-Lm-b44" id="HTx-pl-Hol"/>
                         <outlet property="tokenTextField" destination="ms4-ng-qHh" id="1oq-R9-BL6"/>
                     </connections>
                 </viewController>
@@ -106,7 +108,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="1200" height="360"/>
+        <image name="ChatworkLogo" width="1200" height="360"/>
         <image name="Worker" width="512" height="512"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

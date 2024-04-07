@@ -19,7 +19,13 @@
 		3085EEDF2BC2555F00554A5D /* ChatList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3085EEDE2BC2555F00554A5D /* ChatList.storyboard */; };
 		3085EEE12BC26DD300554A5D /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085EEE02BC26DD300554A5D /* ChatListViewController.swift */; };
 		89113D0F2BC279DA003ED248 /* ChatworkAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D0E2BC279DA003ED248 /* ChatworkAPIProvider.swift */; };
-		89113D112BC27B67003ED248 /* MeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D102BC27B67003ED248 /* MeModel.swift */; };
+		89113D112BC27B67003ED248 /* ChatworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D102BC27B67003ED248 /* ChatworkModel.swift */; };
+		89113D142BC284E9003ED248 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 89113D132BC284E9003ED248 /* CombineMoya */; };
+		89113D162BC284E9003ED248 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 89113D152BC284E9003ED248 /* Moya */; };
+		89113D182BC284E9003ED248 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 89113D172BC284E9003ED248 /* ReactiveMoya */; };
+		89113D1A2BC284E9003ED248 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 89113D192BC284E9003ED248 /* RxMoya */; };
+		89113D1E2BC287D0003ED248 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D1D2BC287D0003ED248 /* LoginViewModel.swift */; };
+		89113D202BC288A5003ED248 /* ChatworkAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D1F2BC288A5003ED248 /* ChatworkAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +62,9 @@
 		3085EEDE2BC2555F00554A5D /* ChatList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatList.storyboard; sourceTree = "<group>"; };
 		3085EEE02BC26DD300554A5D /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		89113D0E2BC279DA003ED248 /* ChatworkAPIProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatworkAPIProvider.swift; sourceTree = "<group>"; };
-		89113D102BC27B67003ED248 /* MeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeModel.swift; sourceTree = "<group>"; };
+		89113D102BC27B67003ED248 /* ChatworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatworkModel.swift; sourceTree = "<group>"; };
+		89113D1D2BC287D0003ED248 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		89113D1F2BC288A5003ED248 /* ChatworkAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatworkAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +72,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89113D162BC284E9003ED248 /* Moya in Frameworks */,
+				89113D142BC284E9003ED248 /* CombineMoya in Frameworks */,
+				89113D1A2BC284E9003ED248 /* RxMoya in Frameworks */,
+				89113D182BC284E9003ED248 /* ReactiveMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +119,8 @@
 		30550C9E2BC14D7700D51876 /* Chatwork */ = {
 			isa = PBXGroup;
 			children = (
+				89113D1C2BC28767003ED248 /* Model */,
+				89113D1B2BC2875B003ED248 /* ViewModel */,
 				3085EEDD2BC2478600554A5D /* Views */,
 				3085EEDC2BC2477900554A5D /* Storyboards */,
 				30550C9F2BC14D7700D51876 /* AppDelegate.swift */,
@@ -148,11 +162,27 @@
 			isa = PBXGroup;
 			children = (
 				30550CA32BC14D7700D51876 /* LoginViewController.swift */,
-				89113D0E2BC279DA003ED248 /* ChatworkAPIProvider.swift */,
 				3085EEE02BC26DD300554A5D /* ChatListViewController.swift */,
-				89113D102BC27B67003ED248 /* MeModel.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		89113D1B2BC2875B003ED248 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				89113D1D2BC287D0003ED248 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		89113D1C2BC28767003ED248 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				89113D102BC27B67003ED248 /* ChatworkModel.swift */,
+				89113D0E2BC279DA003ED248 /* ChatworkAPIProvider.swift */,
+				89113D1F2BC288A5003ED248 /* ChatworkAPIService.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +201,12 @@
 			dependencies = (
 			);
 			name = Chatwork;
+			packageProductDependencies = (
+				89113D132BC284E9003ED248 /* CombineMoya */,
+				89113D152BC284E9003ED248 /* Moya */,
+				89113D172BC284E9003ED248 /* ReactiveMoya */,
+				89113D192BC284E9003ED248 /* RxMoya */,
+			);
 			productName = Chatwork;
 			productReference = 30550C9C2BC14D7700D51876 /* Chatwork.app */;
 			productType = "com.apple.product-type.application";
@@ -243,6 +279,9 @@
 				Base,
 			);
 			mainGroup = 30550C932BC14D7700D51876;
+			packageReferences = (
+				89113D122BC284E9003ED248 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = 30550C9D2BC14D7700D51876 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -288,11 +327,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				30550CA42BC14D7700D51876 /* LoginViewController.swift in Sources */,
-				89113D112BC27B67003ED248 /* MeModel.swift in Sources */,
+				89113D202BC288A5003ED248 /* ChatworkAPIService.swift in Sources */,
+				89113D112BC27B67003ED248 /* ChatworkModel.swift in Sources */,
 				89113D0F2BC279DA003ED248 /* ChatworkAPIProvider.swift in Sources */,
 				30550CA02BC14D7700D51876 /* AppDelegate.swift in Sources */,
 				3085EEE12BC26DD300554A5D /* ChatListViewController.swift in Sources */,
 				30550CA22BC14D7700D51876 /* SceneDelegate.swift in Sources */,
+				89113D1E2BC287D0003ED248 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +680,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		89113D122BC284E9003ED248 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		89113D132BC284E9003ED248 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89113D122BC284E9003ED248 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		89113D152BC284E9003ED248 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89113D122BC284E9003ED248 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		89113D172BC284E9003ED248 /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89113D122BC284E9003ED248 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = ReactiveMoya;
+		};
+		89113D192BC284E9003ED248 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89113D122BC284E9003ED248 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 30550C942BC14D7700D51876 /* Project object */;
 }

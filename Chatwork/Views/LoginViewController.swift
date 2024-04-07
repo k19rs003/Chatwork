@@ -3,7 +3,11 @@ import UIKit
 class LoginViewController: UIViewController {
     var message = "もえぞう"
     @IBOutlet weak var tokenTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
+
+    @IBAction func LoginTappedButton(_ sender: UIButton) {
+        print(tokenTextField!)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
