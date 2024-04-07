@@ -28,6 +28,7 @@
 		89113D1A2BC284E9003ED248 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 89113D192BC284E9003ED248 /* RxMoya */; };
 		89113D1E2BC287D0003ED248 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D1D2BC287D0003ED248 /* LoginViewModel.swift */; };
 		89113D202BC288A5003ED248 /* ChatworkAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D1F2BC288A5003ED248 /* ChatworkAPIService.swift */; };
+		89113D232BC2E57D003ED248 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D222BC2E57D003ED248 /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		89113D102BC27B67003ED248 /* MeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeModel.swift; sourceTree = "<group>"; };
 		89113D1D2BC287D0003ED248 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		89113D1F2BC288A5003ED248 /* ChatworkAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatworkAPIService.swift; sourceTree = "<group>"; };
+		89113D222BC2E57D003ED248 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				3085EEDC2BC2477900554A5D /* Storyboards */,
 				30550C9F2BC14D7700D51876 /* AppDelegate.swift */,
 				30550CA12BC14D7700D51876 /* SceneDelegate.swift */,
+				89113D222BC2E57D003ED248 /* APIKey.swift */,
 				30550CA82BC14D7800D51876 /* Assets.xcassets */,
 				30550CAA2BC14D7800D51876 /* LaunchScreen.storyboard */,
 				30550CAD2BC14D7800D51876 /* Info.plist */,
@@ -337,6 +340,7 @@
 				89113D202BC288A5003ED248 /* ChatworkAPIService.swift in Sources */,
 				89113D112BC27B67003ED248 /* MeModel.swift in Sources */,
 				89113D0F2BC279DA003ED248 /* ChatworkAPIProvider.swift in Sources */,
+				89113D232BC2E57D003ED248 /* APIKey.swift in Sources */,
 				30550CA02BC14D7700D51876 /* AppDelegate.swift in Sources */,
 				3085EEE12BC26DD300554A5D /* ChatListViewController.swift in Sources */,
 				30550CA22BC14D7700D51876 /* SceneDelegate.swift in Sources */,
