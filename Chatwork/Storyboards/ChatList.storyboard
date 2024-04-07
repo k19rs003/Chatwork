@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="111" width="393" height="741"/>
                                 <color key="backgroundColor" name="ImageColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatListCell" rowHeight="70" id="xiT-6x-Ogn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatListCell" rowHeight="70" id="xiT-6x-Ogn" customClass="ChatListCell" customModule="Chatwork" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xiT-6x-Ogn" id="3VO-UH-zXr">
@@ -35,13 +35,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cp-Ep-lzR" userLabel="Name Label">
-                                                    <rect key="frame" x="76" y="8" width="36" height="18"/>
+                                                    <rect key="frame" x="76" y="8" width="36" height="23"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="チャットが読み込めません" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwW-hu-98G" userLabel="Last Chat Label">
-                                                    <rect key="frame" x="76" y="30" width="168" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未読 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwW-hu-98G" userLabel="Unread Label">
+                                                    <rect key="frame" x="76" y="39" width="32.666666666666657" height="14"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -50,14 +50,19 @@
                                             <constraints>
                                                 <constraint firstItem="2cp-Ep-lzR" firstAttribute="leading" secondItem="lIk-wH-7r0" secondAttribute="trailing" constant="8" id="BcQ-D9-eQb"/>
                                                 <constraint firstItem="lIk-wH-7r0" firstAttribute="leading" secondItem="3VO-UH-zXr" secondAttribute="leading" constant="2" id="MIc-f3-ac8"/>
-                                                <constraint firstItem="nwW-hu-98G" firstAttribute="top" secondItem="2cp-Ep-lzR" secondAttribute="bottom" constant="4" id="MyI-Se-6KH"/>
+                                                <constraint firstAttribute="centerY" secondItem="2cp-Ep-lzR" secondAttribute="bottom" constant="4" id="MyI-Se-6KH"/>
                                                 <constraint firstAttribute="bottom" secondItem="lIk-wH-7r0" secondAttribute="bottom" constant="2" id="NCY-AF-btB"/>
                                                 <constraint firstItem="lIk-wH-7r0" firstAttribute="top" secondItem="3VO-UH-zXr" secondAttribute="top" constant="2" id="axa-Tm-G9X"/>
                                                 <constraint firstItem="nwW-hu-98G" firstAttribute="leading" secondItem="2cp-Ep-lzR" secondAttribute="leading" id="uwg-tu-lIX"/>
                                                 <constraint firstItem="2cp-Ep-lzR" firstAttribute="top" secondItem="3VO-UH-zXr" secondAttribute="top" constant="8" id="xyY-FF-lQX" userLabel="Name Label.top = top + 8"/>
+                                                <constraint firstItem="nwW-hu-98G" firstAttribute="top" secondItem="3VO-UH-zXr" secondAttribute="centerYWithinMargins" constant="4" id="yDF-4S-tuV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="ImageColor"/>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="2cp-Ep-lzR" id="ILV-wQ-B6z"/>
+                                            <outlet property="unReadLabel" destination="nwW-hu-98G" id="HON-3h-N91"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

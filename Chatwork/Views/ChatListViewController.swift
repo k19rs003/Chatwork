@@ -3,6 +3,9 @@ import UIKit
 class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var chatListTableView: UITableView!
 
+    // ルームの配列を保持するプロパティ
+    private var rooms: [RoomsModel] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -15,6 +18,12 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
             switch result {
             case .success(let data):
                 print("ROOMS: \(data)")
+                // ルームの配列を保持
+                self.rooms = data
+                // テーブルビューを更新
+                DispatchQueue.main.async {
+                    self.chatListTableView.reloadData()
+                }
             case .failure(let error):
                 print("Error: \(error)")
             }
@@ -22,11 +31,16 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return rooms.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath)
+//        cell.nameLabel.text = "aaa"
+//        
+//        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath) as! ChatListCell
+        cell.create(name: rooms[indexPath.row].name, unread: rooms[indexPath.row].unreadNumber )
         return cell
     }
 
@@ -34,3 +48,4 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         return 64
     }
 }
+
