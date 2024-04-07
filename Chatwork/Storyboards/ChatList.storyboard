@@ -87,7 +87,7 @@
         <!--Navigation Controller-->
         <scene sceneID="VZK-wZ-Coj">
             <objects>
-                <navigationController storyboardIdentifier="chatList" automaticallyAdjustsScrollViewInsets="NO" id="bsd-bq-lzd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="chatList" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="bsd-bq-lzd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OAR-vy-Etx">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
