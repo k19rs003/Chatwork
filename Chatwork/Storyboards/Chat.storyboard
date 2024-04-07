@@ -114,7 +114,7 @@
         <!--Navigation Controller-->
         <scene sceneID="slW-aK-SxL">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="7oR-wL-Ck4" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Chat" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="7oR-wL-Ck4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tXK-vu-2Ox">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
