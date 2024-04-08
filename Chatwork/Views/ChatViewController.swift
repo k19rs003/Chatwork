@@ -6,7 +6,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var messageTextField: UITextField!
     
-    var roomId = 0
+    var roomId = 357128147
     var name = ""
     let message = "aaaaa"
     private var messages: [ReadMessagesModel] = []
@@ -56,7 +56,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         ChatworkAPIProvider.shared.api(.messages(roomId: roomId, apiToken: apiToken), modelType: [ReadMessagesModel].self) { result in
             switch result {
             case .success(let data):
-                print("Messages: \(data)")
+                print("ReadMessages: \(data)")
                 // ルームの配列を保持
                 self.messages = data
                 // テーブルビューを更新
@@ -64,18 +64,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.chatTableView.reloadData()
                 }
             case .failure(let error):
-                print("Error: \(error)")
+                print("GetMessageError: \(error)")
             }
         }
     }
-    
+
     private func sendMessages() {
         guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else { return }
         guard let message = messageTextField.text else { return }
-        ChatworkAPIProvider.shared.api(.postMessages(roomId: roomId, apiToken: apiToken, postData: "self_unread=0&body=\(message)".data(using: .utf8)!), modelType: [PostMessageModel].self ) { result in
+        ChatworkAPIProvider.shared.api(.postMessages(roomId: roomId, apiToken: apiToken, postData: "self_unread=0&body=\(message)".data(using: .utf8)!), modelType: PostMessageModel.self ) { result in
             switch result {
             case .success(let data):
-                print("Messages: \(data)")
+                print("PostMessages: \(data)")
                 // ルームの配列を保持
 //                self.messages = data
 //                // テーブルビューを更新

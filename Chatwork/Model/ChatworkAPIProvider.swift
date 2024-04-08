@@ -79,6 +79,7 @@ final class ChatworkAPIProvider: MoyaProvider<ChatworkAPIService> {
                     completion(.success(data))
                 } catch(let error) {
                     completion(.failure(error))
+                    print("errorCode: \(error.localizedDescription)")
                 }
             case let .failure(error):
                 let apiError = self.mapErrorCodeToAPIError(error.errorCode)
@@ -86,6 +87,7 @@ final class ChatworkAPIProvider: MoyaProvider<ChatworkAPIService> {
             }
         }
     }
+
 
     private func mapErrorCodeToAPIError(_ errorCode: Int) -> APIError {
         switch errorCode {
