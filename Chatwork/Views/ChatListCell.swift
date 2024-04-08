@@ -1,10 +1,3 @@
-//
-//  ChatListCell.swift
-//  Chatwork
-//
-//  Created by Abe on R 6/04/08.
-//
-
 import UIKit
 
 class ChatListCell: UITableViewCell {
