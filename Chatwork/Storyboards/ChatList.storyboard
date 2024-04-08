@@ -68,6 +68,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="ImageColor"/>
                                         <connections>
+                                            <outlet property="iconLabel" destination="lIk-wH-7r0" id="23c-nd-qhp"/>
                                             <outlet property="nameLabel" destination="2cp-Ep-lzR" id="ILV-wQ-B6z"/>
                                             <outlet property="unReadLabel" destination="nwW-hu-98G" id="HON-3h-N91"/>
                                         </connections>

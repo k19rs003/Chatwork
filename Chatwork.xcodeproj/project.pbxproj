@@ -33,6 +33,8 @@
 		89113D1E2BC287D0003ED248 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D1D2BC287D0003ED248 /* ChatListViewModel.swift */; };
 		89113D202BC288A5003ED248 /* ChatworkAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D1F2BC288A5003ED248 /* ChatworkAPIService.swift */; };
 		89113D272BC2F2F3003ED248 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89113D262BC2F2F3003ED248 /* APIError.swift */; };
+		89113EC12BC3E8CF003ED248 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 89113EC02BC3E8CF003ED248 /* Nuke */; };
+		89113EC32BC3E8CF003ED248 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 89113EC22BC3E8CF003ED248 /* NukeExtensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 				89113D142BC284E9003ED248 /* CombineMoya in Frameworks */,
 				89113D1A2BC284E9003ED248 /* RxMoya in Frameworks */,
 				89113D182BC284E9003ED248 /* ReactiveMoya in Frameworks */,
+				89113EC12BC3E8CF003ED248 /* Nuke in Frameworks */,
+				89113EC32BC3E8CF003ED248 /* NukeExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +231,8 @@
 				89113D152BC284E9003ED248 /* Moya */,
 				89113D172BC284E9003ED248 /* ReactiveMoya */,
 				89113D192BC284E9003ED248 /* RxMoya */,
+				89113EC02BC3E8CF003ED248 /* Nuke */,
+				89113EC22BC3E8CF003ED248 /* NukeExtensions */,
 			);
 			productName = Chatwork;
 			productReference = 30550C9C2BC14D7700D51876 /* Chatwork.app */;
@@ -302,6 +308,7 @@
 			mainGroup = 30550C932BC14D7700D51876;
 			packageReferences = (
 				89113D122BC284E9003ED248 /* XCRemoteSwiftPackageReference "Moya" */,
+				89113EBF2BC3E8CF003ED248 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = 30550C9D2BC14D7700D51876 /* Products */;
 			projectDirPath = "";
@@ -720,6 +727,14 @@
 				minimumVersion = 15.0.3;
 			};
 		};
+		89113EBF2BC3E8CF003ED248 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -742,6 +757,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 89113D122BC284E9003ED248 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		89113EC02BC3E8CF003ED248 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89113EBF2BC3E8CF003ED248 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		89113EC22BC3E8CF003ED248 /* NukeExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89113EBF2BC3E8CF003ED248 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
