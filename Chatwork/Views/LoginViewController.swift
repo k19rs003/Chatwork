@@ -32,7 +32,6 @@ class LoginViewController: UIViewController {
         ChatworkAPIProvider.shared.api(.me(apiToken: apiToken), modelType: MeModel.self) { result in
             switch result {
             case .success(let data):
-                
                 print("data: \(data)")
                 UserDefaults.standard.set(apiToken, forKey: "apiToken")
                 

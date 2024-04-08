@@ -2,6 +2,9 @@ import UIKit
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var chatTableView: UITableView!
+    private var messages: [MessagesModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getMessages()
@@ -13,6 +16,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch result {
             case .success(let data):
                 print("Messages: \(data)")
+                // ルームの配列を保持
+                self.messages = data
+                // テーブルビューを更新
+                DispatchQueue.main.async {
+                    self.chatTableView.reloadData()
+                }
             case .failure(let error):
                 print("Error: \(error)")
             }
@@ -21,7 +30,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

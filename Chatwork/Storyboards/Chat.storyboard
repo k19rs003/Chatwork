@@ -108,6 +108,9 @@
                     <navigationItem key="navigationItem" title="チャット" id="7rU-u4-iYJ">
                         <barButtonItem key="backBarButtonItem" id="E7N-e5-ZJL"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="chatTableView" destination="m5F-DK-muQ" id="qbX-by-NEr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

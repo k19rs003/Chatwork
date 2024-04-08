@@ -1,25 +1,47 @@
 import Foundation
 
 struct MeModel: Codable {
-    var accountId: Int
-    var roomId: Int
-    var name: String
-    var chatworkId: String
-    var organizationId: Int
-    var organizationName: String
-    var department: String
-    var title: String
-    var url: String
-    var introduction: String
-    var mail: String
-    var telOrganization: String
-    var telExtension: String
-    var telMobile: String
-    var skype: String
-    var facebook: String
-    var twitter: String
-    var avatarImageUrl: String
-    var loginMail: String
+    let accountId: Int
+    let roomId: Int
+    let name: String
+    let chatworkId: String
+    let organizationId: Int
+    let organizationName: String
+    let department: String
+    let title: String
+    let url: String
+    let introduction: String
+    let mail: String
+    let telOrganization: String
+    let telExtension: String
+    let telMobile: String
+    let skype: String
+    let facebook: String
+    let twitter: String
+    let avatarImageUrl: URL
+    let loginMail: String
+
+    enum CodingKeys: String, CodingKey {
+        case accountId = "account_id"
+        case roomId = "room_id"
+        case name
+        case chatworkId = "chatwork_id"
+        case organizationId = "organization_id"
+        case organizationName = "organization_name"
+        case department
+        case title
+        case url
+        case introduction
+        case mail
+        case telOrganization = "tel_organization"
+        case telExtension = "tel_extension"
+        case telMobile = "tel_mobile"
+        case skype
+        case facebook
+        case twitter
+        case avatarImageUrl = "avatar_image_url"
+        case loginMail = "login_mail"
+    }
 }
 
 struct RoomsModel: Codable {
@@ -73,7 +95,7 @@ struct MessagesModel: Codable {
 struct Account: Codable {
     let accountId: Int
     let name: String
-    let avatarImageUrl: URL
+    let avatarImageUrl: String
 
     enum CodingKeys: String, CodingKey {
         case accountId = "account_id"
