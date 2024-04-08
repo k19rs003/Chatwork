@@ -45,19 +45,19 @@ struct MeModel: Codable {
 }
 
 struct RoomsModel: Codable {
-    var roomId: Int
-    var name: String
-    var type: String
-    var role: String
-    var sticky: Bool
-    var unreadNumber: Int
-    var mentionNumber: Int
-    var mytaskNumber: Int
-    var messageNumber: Int
-    var fileNumber: Int
-    var taskNumber: Int
-    var iconPath: String
-    var lastUpdateTime: Int
+    let roomId: Int
+    let name: String
+    let type: String
+    let role: String
+    let sticky: Bool
+    let unreadNumber: Int
+    let mentionNumber: Int
+    let mytaskNumber: Int
+    let messageNumber: Int
+    let fileNumber: Int
+    let taskNumber: Int
+    let iconPath: String
+    let lastUpdateTime: Int
 
     enum CodingKeys: String, CodingKey {
         case roomId = "room_id"

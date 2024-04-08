@@ -11,7 +11,7 @@ enum ChatworkAPIService {
     case my(apiToken: String)
     case contacts(apiToken: String)
     case rooms(apiToken: String)
-    case messages(roomId: Int, apiToken: String)
+    case messages(roomId: Int, apiToken: String, force: Int)
     
     // 新しいAPIエンドポイント
     case postMessages(roomId: Int, apiToken: String, postData: Data)
@@ -33,8 +33,8 @@ extension ChatworkAPIService: TargetType {
             return "/contacts"
         case .rooms:
             return "/rooms"
-        case .messages(let roomId, _):
-            return "/rooms/\(roomId)/messages?force=1"
+        case .messages(let roomId, _, _):
+            return "/rooms/\(roomId)/messages"
         case .postMessages(let roomId, _, _):
             return "/rooms/\(roomId)/messages"
         }
@@ -52,8 +52,10 @@ extension ChatworkAPIService: TargetType {
 
     var task: Moya.Task {
         switch self {
-        case .me, .my, .contacts, .rooms, .messages:
+        case .me, .my, .contacts, .rooms:
             return .requestPlain
+        case .messages(_, _, let force):
+            return .requestParameters(parameters: ["force": force], encoding: URLEncoding.default)
         case .postMessages(_, _, let postData):
             return .requestData(postData)
         }
@@ -61,7 +63,7 @@ extension ChatworkAPIService: TargetType {
 
     var headers: [String : String]? {
         switch self {
-        case .me(let apiToken), .my(let apiToken), .contacts(let apiToken), .rooms(let apiToken), .messages(_, let apiToken):
+        case .me(let apiToken), .my(let apiToken), .contacts(let apiToken), .rooms(let apiToken), .messages(_, let apiToken, _):
             return ["accept": "application/json",
                     "x-chatworktoken": apiToken]
         case .postMessages(_, let apiToken, _):
