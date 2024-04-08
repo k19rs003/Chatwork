@@ -30,8 +30,9 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let rooms = viewModel.rooms[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath) as! ChatListCell
-        cell.create(name: viewModel.rooms[indexPath.row].name, unread: viewModel.rooms[indexPath.row].unreadNumber )
+        cell.create(image: rooms.iconPath, name: rooms.name, unread: rooms.unreadNumber )
         return cell
     }
     
