@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="69" width="393" height="663.66666666666663"/>
                                 <color key="backgroundColor" name="ImageColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="70" id="iUK-xY-vEF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="70" id="iUK-xY-vEF" customClass="MessageCell" customModule="Chatwork" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iUK-xY-vEF" id="Kys-Cd-964">
@@ -68,6 +68,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="ImageColor"/>
+                                        <connections>
+                                            <outlet property="chatTextView" destination="1CJ-yH-3a5" id="RBY-oy-T3M"/>
+                                            <outlet property="nameLabel" destination="mVX-9g-kCE" id="uUh-Jb-5SM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
