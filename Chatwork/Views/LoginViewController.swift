@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var tokenTextField: UITextField! {
@@ -6,11 +7,29 @@ class LoginViewController: UIViewController {
             tokenTextField.delegate = self
         }
     }
+    
+    private var viewModel = LoginViewModel()
+    private var cancellables: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        bindViewModel()
     }
+    
+    private func bindViewModel() {
+            viewModel.$isLoggedIn
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] isLoggedIn in
+                    if isLoggedIn {
+                        print("Logged in!")
+                        let storyboard: UIStoryboard = UIStoryboard(name: "ChatList", bundle: nil)
+                        let navigationController = storyboard.instantiateViewController(withIdentifier: "chatList") as! UINavigationController
+                        self?.present(navigationController, animated: true, completion: nil)
+                    }
+                }
+                .store(in: &cancellables)
+        }
 
     override func viewDidAppear(_ animated: Bool) {
         if let _ = UserDefaults.standard.string(forKey: "apiToken") {
@@ -29,22 +48,7 @@ class LoginViewController: UIViewController {
         guard let apiToken = tokenTextField.text else {
             return
         }
-        ChatworkAPIProvider.shared.api(.me(apiToken: apiToken), modelType: MeModel.self) { result in
-            switch result {
-            case .success(let data):
-                print("data: \(data)")
-                UserDefaults.standard.set(apiToken, forKey: "apiToken")
-                
-                //遷移先のStoryboardを設定
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChatList", bundle: nil)
-                //遷移先のNavigationControllerを設定
-                let navigationController = storyboard.instantiateViewController(withIdentifier: "chatList") as! UINavigationController
-                self.present(navigationController, animated: true, completion: nil)
-                
-            case .failure(let error):
-                print("Error: \(error)")
-            }
-        }
+        viewModel.login(apiToken: apiToken)
     }
     
 

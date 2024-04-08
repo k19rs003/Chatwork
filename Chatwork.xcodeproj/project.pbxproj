@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		30372EE02BC2ED6200527B6D /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30372EDF2BC2ED6200527B6D /* ChatListCell.swift */; };
+		30372EE22BC3B53B00527B6D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30372EE12BC3B53B00527B6D /* LoginViewModel.swift */; };
 		30550CA02BC14D7700D51876 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30550C9F2BC14D7700D51876 /* AppDelegate.swift */; };
 		30550CA22BC14D7700D51876 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30550CA12BC14D7700D51876 /* SceneDelegate.swift */; };
 		30550CA42BC14D7700D51876 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30550CA32BC14D7700D51876 /* LoginViewController.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		30372EDF2BC2ED6200527B6D /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
+		30372EE12BC3B53B00527B6D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		30550C9C2BC14D7700D51876 /* Chatwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chatwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30550C9F2BC14D7700D51876 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30550CA12BC14D7700D51876 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				89113D1D2BC287D0003ED248 /* ChatListViewModel.swift */,
+				30372EE12BC3B53B00527B6D /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				30372EE02BC2ED6200527B6D /* ChatListCell.swift in Sources */,
 				3085EEE12BC26DD300554A5D /* ChatListViewController.swift in Sources */,
 				30550CA22BC14D7700D51876 /* SceneDelegate.swift in Sources */,
+				30372EE22BC3B53B00527B6D /* LoginViewModel.swift in Sources */,
 				3097B9542BC2DE2B005F270B /* ChatViewController.swift in Sources */,
 				89113D1E2BC287D0003ED248 /* ChatListViewModel.swift in Sources */,
 				89113D272BC2F2F3003ED248 /* APIError.swift in Sources */,
