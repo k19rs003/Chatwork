@@ -5,13 +5,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var messageTextField: UITextField!
-    @IBOutlet weak var sendButton: UIButton!
     
+    var roomId = 0
+    var name = ""
     private var messages: [MessagesModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         messageTextField.delegate = self
+        
+        navigationItem.title = name
         // キーボード開閉のタイミングを取得
         let notification = NotificationCenter.default
         notification.addObserver(self, selector: #selector(self.keyboardWillShow(_:)),
@@ -33,9 +36,23 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
+        
+        return cell
+    }
+    
+    @IBAction func sendButtonTapped(_ sender: UIButton) {
+        
+    }
+    
     private func getMessages() {
         guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else { return }
-        ChatworkAPIProvider.shared.api(.messages(roomId: 357128147, apiToken: apiToken), modelType: [MessagesModel].self) { result in
+        ChatworkAPIProvider.shared.api(.messages(roomId: roomId, apiToken: apiToken), modelType: [MessagesModel].self) { result in
             switch result {
             case .success(let data):
                 print("Messages: \(data)")
@@ -51,16 +68,24 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+    private func sendMessages() {
+        guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else { return }
+        ChatworkAPIProvider.shared.api(.messages(roomId: roomId, apiToken: apiToken), modelType: [MessagesModel].self) { result in
+            switch result {
+            case .success(let data):
+                print("Messages: \(data)")
+                // ルームの配列を保持
+                self.messages = data
+                // テーブルビューを更新
+                DispatchQueue.main.async {
+                    self.chatTableView.reloadData()
+                }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-        
-        return cell
-    }
 }
 
 extension ChatViewController: UITextFieldDelegate {

@@ -16,8 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PHQ-6s-xvM" userLabel="Space View">
+                                <rect key="frame" x="0.0" y="103" width="393" height="2"/>
+                                <color key="backgroundColor" name="NavigationColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="1L1-Pq-YZw"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2lM-XG-itI">
-                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                                <rect key="frame" x="0.0" y="105" width="393" height="747"/>
                                 <color key="backgroundColor" name="ImageColor"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -75,10 +82,13 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="ImageColor"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PHQ-6s-xvM" secondAttribute="trailing" id="CiW-xa-ctp"/>
                             <constraint firstItem="2lM-XG-itI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DDb-OI-gLK"/>
-                            <constraint firstItem="2lM-XG-itI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Jro-cl-Y2B"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="2lM-XG-itI" secondAttribute="trailing" id="TuA-oR-qto"/>
                             <constraint firstAttribute="bottom" secondItem="2lM-XG-itI" secondAttribute="bottom" id="afM-Vx-TyP"/>
+                            <constraint firstItem="2lM-XG-itI" firstAttribute="top" secondItem="PHQ-6s-xvM" secondAttribute="bottom" id="f87-Km-5I5"/>
+                            <constraint firstItem="PHQ-6s-xvM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="tO7-DY-FiQ"/>
+                            <constraint firstItem="PHQ-6s-xvM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="uCD-Z6-rK2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="チャット一覧" id="BPJ-Y1-2qC"/>
@@ -113,6 +123,9 @@
         <image name="person.circle" width="11" height="11"/>
         <namedColor name="ImageColor">
             <color red="0.075000002980232239" green="0.125" blue="0.18400000035762787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NavigationColor">
+            <color red="0.12200000137090683" green="0.20399999618530273" blue="0.30199998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

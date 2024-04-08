@@ -16,8 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2s-ur-R0v" userLabel="Space View">
+                                <rect key="frame" x="0.0" y="59" width="393" height="2"/>
+                                <color key="backgroundColor" name="NavigationColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="wuy-8e-JTe"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="m5F-DK-muQ">
-                                <rect key="frame" x="0.0" y="67" width="393" height="665.66666666666663"/>
+                                <rect key="frame" x="0.0" y="69" width="393" height="663.66666666666663"/>
                                 <color key="backgroundColor" name="ImageColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="70" id="iUK-xY-vEF">
@@ -81,6 +88,9 @@
                                         <buttonConfiguration key="configuration" style="filled" title="送信">
                                             <fontDescription key="titleFontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="16"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="sendButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IdH-qU-apJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -95,9 +105,12 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="ImageColor"/>
                         <constraints>
+                            <constraint firstItem="c2s-ur-R0v" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0Hz-ol-jiE"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="m5F-DK-muQ" secondAttribute="trailing" id="3hZ-wq-CkY"/>
-                            <constraint firstItem="m5F-DK-muQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="MKc-PN-gux"/>
+                            <constraint firstItem="m5F-DK-muQ" firstAttribute="top" secondItem="c2s-ur-R0v" secondAttribute="bottom" constant="8" id="VJK-ko-Y7a"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="AnG-iS-2u0" secondAttribute="trailing" id="ZMF-I6-0ta"/>
+                            <constraint firstItem="c2s-ur-R0v" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="cLj-ES-TaX"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="c2s-ur-R0v" secondAttribute="trailing" id="dXk-qC-enM"/>
                             <constraint firstItem="AnG-iS-2u0" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.1" id="mFJ-Sf-rh5"/>
                             <constraint firstItem="AnG-iS-2u0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="s2m-Ux-Cut"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="AnG-iS-2u0" secondAttribute="bottom" id="tcR-Tw-hif"/>
@@ -112,7 +125,6 @@
                         <outlet property="bottomView" destination="AnG-iS-2u0" id="LHm-Fu-v1O"/>
                         <outlet property="chatTableView" destination="m5F-DK-muQ" id="qbX-by-NEr"/>
                         <outlet property="messageTextField" destination="FG0-tx-xku" id="q2R-RB-tQK"/>
-                        <outlet property="sendButton" destination="0Lc-RU-3Qg" id="gOK-bz-pMm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -124,6 +136,9 @@
         <image name="person.circle" width="11" height="11"/>
         <namedColor name="ImageColor">
             <color red="0.075000002980232239" green="0.125" blue="0.18400000035762787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NavigationColor">
+            <color red="0.12200000137090683" green="0.20399999618530273" blue="0.30199998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

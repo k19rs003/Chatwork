@@ -47,7 +47,9 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Chat", bundle: nil)
-        let nextViewController =  storyboard.instantiateViewController(withIdentifier: "Chat")
+        let nextViewController =  storyboard.instantiateViewController(withIdentifier: "Chat") as! ChatViewController
+        nextViewController.name = rooms[indexPath.row].name
+        nextViewController.roomId = rooms[indexPath.row].roomId
         navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
