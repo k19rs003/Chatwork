@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="m5F-DK-muQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="m5F-DK-muQ">
                                 <rect key="frame" x="0.0" y="67" width="393" height="665.66666666666663"/>
                                 <color key="backgroundColor" name="ImageColor"/>
                                 <prototypes>
@@ -67,7 +67,7 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="rc7-Ej-JNM"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AnG-iS-2u0" userLabel="Input View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AnG-iS-2u0" userLabel="Bottom View">
                                 <rect key="frame" x="0.0" y="732.66666666666663" width="393" height="85.333333333333371"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FG0-tx-xku" userLabel="Message Text Field">
@@ -109,7 +109,10 @@
                         <barButtonItem key="backBarButtonItem" id="E7N-e5-ZJL"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomView" destination="AnG-iS-2u0" id="LHm-Fu-v1O"/>
                         <outlet property="chatTableView" destination="m5F-DK-muQ" id="qbX-by-NEr"/>
+                        <outlet property="messageTextField" destination="FG0-tx-xku" id="q2R-RB-tQK"/>
+                        <outlet property="sendButton" destination="0Lc-RU-3Qg" id="gOK-bz-pMm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

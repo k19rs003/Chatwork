@@ -3,12 +3,35 @@ import UIKit
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var chatTableView: UITableView!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var sendButton: UIButton!
+    
     private var messages: [MessagesModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageTextField.delegate = self
+        // キーボード開閉のタイミングを取得
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(self.keyboardWillShow(_:)),
+                                 name: UIResponder.keyboardWillShowNotification,
+                                 object: nil)
+        notification.addObserver(self, selector: #selector(self.keyboardWillHide(_:)),
+                                 name: UIResponder.keyboardWillHideNotification,
+                                 object: nil)
+        
+        // タップ認識するためのインスタンスを生成
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        // Viewに追加
+        view.addGestureRecognizer(tapGesture)
+        
         getMessages()
     }
+    
     
     private func getMessages() {
         guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else { return }
@@ -30,15 +53,63 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-
+        
         return cell
+    }
+}
+
+extension ChatViewController: UITextFieldDelegate {
+    @objc func keyboardWillShow(_ notification: Notification) {
+        
+        // キーボード、画面全体、textFieldのsizeを取得
+        let rect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        guard let keyboardHeight = rect?.size.height else { return }
+        let mainBoundsSize = UIScreen.main.bounds.size
+        let textFieldHeight = bottomView.frame.height
+        
+        // ①
+        let textFieldPositionY = bottomView.frame.origin.y + textFieldHeight + 10.0
+        // ②
+        let keyboardPositionY = mainBoundsSize.height - keyboardHeight
+        
+        // ③キーボードをずらす
+        if keyboardPositionY <= textFieldPositionY {
+            let duration: TimeInterval? = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+            UIView.animate(withDuration: duration!) {
+                // viewをy座標方向にtransformする
+                self.bottomView.transform = CGAffineTransform(translationX: 0, y: keyboardPositionY - textFieldPositionY)
+                self.chatTableView.transform = CGAffineTransform(translationX: 0, y: keyboardPositionY - textFieldPositionY)
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        let duration: TimeInterval? = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? Double
+        UIView.animate(withDuration: duration!) {
+            self.bottomView.transform = CGAffineTransform.identity
+            self.chatTableView.transform = CGAffineTransform.identity
+        }
     }
     
     
+    // リターンがタップされた時にキーボードを閉じる
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
+    // 画面をタップした時にキーボードを閉じる
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // キーボードと閉じる際の処理
+    @objc public func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
