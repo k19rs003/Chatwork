@@ -1,46 +1,40 @@
 import UIKit
+import Combine
 
 class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var chatListTableView: UITableView!
-
-    // ルームの配列を保持するプロパティ
-    private var rooms: [RoomsModel] = []
-
+ 
+    private var viewModel = ChatListViewModel()
+    private var cancellables: Set<AnyCancellable> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        getRooms()
+        
+        bindViewModel()
+        viewModel.getRooms()
     }
-
-    private func getRooms() {
-        guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else { return }
-        ChatworkAPIProvider.shared.api(.rooms(apiToken: apiToken), modelType: [RoomsModel].self) { result in
-            switch result {
-            case .success(let data):
-                print("ROOMS: \(data)")
-                // ルームの配列を保持
-                self.rooms = data
-                // テーブルビューを更新
-                DispatchQueue.main.async {
-                    self.chatListTableView.reloadData()
-                }
-            case .failure(let error):
-                print("Error: \(error)")
+    
+    private func bindViewModel() {
+        viewModel.$rooms
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.chatListTableView.reloadData()
             }
-        }
+            .store(in: &cancellables)
     }
-
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rooms.count
+        return viewModel.rooms.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath) as! ChatListCell
-        cell.create(name: rooms[indexPath.row].name, unread: rooms[indexPath.row].unreadNumber )
+        cell.create(name: viewModel.rooms[indexPath.row].name, unread: viewModel.rooms[indexPath.row].unreadNumber )
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72
     }
@@ -48,8 +42,8 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Chat", bundle: nil)
         let nextViewController =  storyboard.instantiateViewController(withIdentifier: "Chat") as! ChatViewController
-        nextViewController.name = rooms[indexPath.row].name
-        nextViewController.roomId = rooms[indexPath.row].roomId
+        nextViewController.name = viewModel.rooms[indexPath.row].name
+        nextViewController.roomId = viewModel.rooms[indexPath.row].roomId
         navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
