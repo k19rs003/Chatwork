@@ -97,10 +97,21 @@
                                             <action selector="sendButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IdH-qU-apJ"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTY-wC-Esw" userLabel="Bottom Space View">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="2"/>
+                                        <color key="backgroundColor" name="NavigationColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="Xel-la-LF2"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
+                                <color key="backgroundColor" name="ImageColor"/>
                                 <constraints>
                                     <constraint firstItem="0Lc-RU-3Qg" firstAttribute="leading" secondItem="FG0-tx-xku" secondAttribute="trailing" constant="16" id="4Ae-3v-b4w"/>
+                                    <constraint firstAttribute="trailing" secondItem="zTY-wC-Esw" secondAttribute="trailing" id="5d1-ib-jjt"/>
                                     <constraint firstItem="FG0-tx-xku" firstAttribute="centerY" secondItem="AnG-iS-2u0" secondAttribute="centerY" id="8op-kc-Opr"/>
+                                    <constraint firstItem="zTY-wC-Esw" firstAttribute="leading" secondItem="AnG-iS-2u0" secondAttribute="leading" id="E4N-yY-42T"/>
+                                    <constraint firstItem="zTY-wC-Esw" firstAttribute="top" secondItem="AnG-iS-2u0" secondAttribute="top" id="NJc-Hk-gzo"/>
                                     <constraint firstItem="0Lc-RU-3Qg" firstAttribute="centerY" secondItem="AnG-iS-2u0" secondAttribute="centerY" id="Uwl-yb-rF6"/>
                                     <constraint firstAttribute="trailing" secondItem="0Lc-RU-3Qg" secondAttribute="trailing" constant="8" id="WPd-m8-kp2"/>
                                     <constraint firstItem="FG0-tx-xku" firstAttribute="leading" secondItem="AnG-iS-2u0" secondAttribute="leading" constant="16" id="ZW3-ie-KvC"/>
