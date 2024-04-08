@@ -8,7 +8,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var roomId = 0
     var name = ""
-    private var messages: [MessagesModel] = []
+    let message = "aaaaa"
+    private var messages: [ReadMessagesModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +48,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
-        
+        sendMessages()
     }
     
     private func getMessages() {
         guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else { return }
-        ChatworkAPIProvider.shared.api(.messages(roomId: roomId, apiToken: apiToken), modelType: [MessagesModel].self) { result in
+        ChatworkAPIProvider.shared.api(.messages(roomId: roomId, apiToken: apiToken), modelType: [ReadMessagesModel].self) { result in
             switch result {
             case .success(let data):
                 print("Messages: \(data)")
@@ -70,16 +71,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func sendMessages() {
         guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else { return }
-        ChatworkAPIProvider.shared.api(.messages(roomId: roomId, apiToken: apiToken), modelType: [MessagesModel].self) { result in
+        ChatworkAPIProvider.shared.api(.postMessages(roomId: roomId, apiToken: apiToken, postData: Data(message.utf8)), modelType: [PostMessageModel].self) { result in
             switch result {
             case .success(let data):
                 print("Messages: \(data)")
                 // ルームの配列を保持
-                self.messages = data
-                // テーブルビューを更新
-                DispatchQueue.main.async {
-                    self.chatTableView.reloadData()
-                }
+//                self.messages = data
+//                // テーブルビューを更新
+//                DispatchQueue.main.async {
+//                    self.chatTableView.reloadData()
+//                }
             case .failure(let error):
                 print("Error: \(error)")
             }
@@ -108,7 +109,7 @@ extension ChatViewController: UITextFieldDelegate {
             UIView.animate(withDuration: duration!) {
                 // viewをy座標方向にtransformする
                 self.bottomView.transform = CGAffineTransform(translationX: 0, y: keyboardPositionY - textFieldPositionY)
-                self.chatTableView.transform = CGAffineTransform(translationX: 0, y: keyboardPositionY - textFieldPositionY)
+//                self.chatTableView.transform = CGAffineTransform(translationX: 0, y: keyboardPositionY - textFieldPositionY)
             }
         }
     }
@@ -117,7 +118,7 @@ extension ChatViewController: UITextFieldDelegate {
         let duration: TimeInterval? = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? Double
         UIView.animate(withDuration: duration!) {
             self.bottomView.transform = CGAffineTransform.identity
-            self.chatTableView.transform = CGAffineTransform.identity
+//            self.chatTableView.transform = CGAffineTransform.identity
         }
     }
     

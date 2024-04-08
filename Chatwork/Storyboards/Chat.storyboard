@@ -42,7 +42,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVX-9g-kCE" userLabel="Name Label">
-                                                    <rect key="frame" x="79" y="13" width="28" height="14"/>
+                                                    <rect key="frame" x="79" y="13" width="275" height="14"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -55,13 +55,14 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="1CJ-yH-3a5" firstAttribute="leading" secondItem="guD-Jy-Mmf" secondAttribute="trailing" constant="8" id="0jV-49-Oxx"/>
                                                 <constraint firstItem="guD-Jy-Mmf" firstAttribute="width" secondItem="Kys-Cd-964" secondAttribute="width" multiplier="0.16" id="9QW-GS-paa"/>
                                                 <constraint firstItem="mVX-9g-kCE" firstAttribute="top" secondItem="Kys-Cd-964" secondAttribute="topMargin" constant="2" id="HXD-G2-3HS"/>
                                                 <constraint firstItem="guD-Jy-Mmf" firstAttribute="top" secondItem="Kys-Cd-964" secondAttribute="top" constant="2" id="O9p-So-clI"/>
                                                 <constraint firstItem="guD-Jy-Mmf" firstAttribute="centerY" secondItem="Kys-Cd-964" secondAttribute="centerY" id="Som-nR-89w"/>
                                                 <constraint firstItem="1CJ-yH-3a5" firstAttribute="top" secondItem="mVX-9g-kCE" secondAttribute="bottom" constant="8" id="YJu-aj-3PV"/>
                                                 <constraint firstItem="1CJ-yH-3a5" firstAttribute="width" secondItem="Kys-Cd-964" secondAttribute="width" multiplier="0.7" id="aTI-J5-Hox"/>
-                                                <constraint firstItem="1CJ-yH-3a5" firstAttribute="leading" secondItem="mVX-9g-kCE" secondAttribute="leading" id="kch-Lp-KQ2"/>
+                                                <constraint firstItem="mVX-9g-kCE" firstAttribute="width" secondItem="Kys-Cd-964" secondAttribute="width" multiplier="0.7" id="mWd-wd-FjF"/>
                                                 <constraint firstItem="mVX-9g-kCE" firstAttribute="leading" secondItem="guD-Jy-Mmf" secondAttribute="trailing" constant="8" id="o3T-Aa-MCS"/>
                                                 <constraint firstItem="guD-Jy-Mmf" firstAttribute="leading" secondItem="Kys-Cd-964" secondAttribute="leading" constant="8" id="q0x-8r-2J0"/>
                                             </constraints>

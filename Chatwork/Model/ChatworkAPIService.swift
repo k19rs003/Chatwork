@@ -6,11 +6,15 @@ enum GithubError: Error {
 }
 
 enum ChatworkAPIService {
+    // 既存のAPIエンドポイント
     case me(apiToken: String)
     case my(apiToken: String)
     case contacts(apiToken: String)
     case rooms(apiToken: String)
     case messages(roomId: Int, apiToken: String)
+    
+    // 新しいAPIエンドポイント
+    case postMessages(roomId: Int, apiToken: String, postData: Data)
 }
 
 extension ChatworkAPIService: TargetType {
@@ -31,21 +35,38 @@ extension ChatworkAPIService: TargetType {
             return "/rooms"
         case .messages(let roomId, _):
             return "/rooms/\(roomId)/messages?force=1"
+        case .postMessages(let roomId, _, _):
+            return "/rooms/\(roomId)/messages"
+        }
+    }
+    
+
+    var method: Moya.Method {
+        switch self {
+        case .me, .my, .contacts, .rooms, .messages:
+            return .get
+        case .postMessages:
+            return .post
         }
     }
 
-    var method: Moya.Method {
-        return .get
-    }
-
     var task: Moya.Task {
-        return .requestPlain
+        switch self {
+        case .me, .my, .contacts, .rooms, .messages:
+            return .requestPlain
+        case .postMessages(_, _, let postData):
+            return .requestData(postData)
+        }
     }
 
     var headers: [String : String]? {
         switch self {
         case .me(let apiToken), .my(let apiToken), .contacts(let apiToken), .rooms(let apiToken), .messages(_, let apiToken):
             return ["accept": "application/json",
+                    "x-chatworktoken": apiToken]
+        case .postMessages(_, let apiToken, _):
+            return ["accept": "application/json",
+                    "content-type": "application/x-www-form-urlencoded",
                     "x-chatworktoken": apiToken]
         }
     }

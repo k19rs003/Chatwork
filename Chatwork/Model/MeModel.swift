@@ -76,7 +76,7 @@ struct RoomsModel: Codable {
     }
 }
 
-struct MessagesModel: Codable {
+struct ReadMessagesModel: Codable {
     let messageId: String
     let account: Account
     let body: String
@@ -101,5 +101,13 @@ struct Account: Codable {
         case accountId = "account_id"
         case name
         case avatarImageUrl = "avatar_image_url"
+    }
+}
+
+struct PostMessageModel: Codable {
+    let messageId: String
+
+    enum CodingKeys: String, CodingKey {
+        case messageId = "message_id"
     }
 }
