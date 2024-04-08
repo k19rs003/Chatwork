@@ -6,9 +6,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var messageTextField: UITextField!
     
-    var roomId = 357128147
+    var roomId = 0
     var name = ""
-    let message = "aaaaa"
     private var messages: [ReadMessagesModel] = []
     
     override func viewDidLoad() {
