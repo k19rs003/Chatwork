@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -8,7 +9,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var roomId = 0
     var name = ""
-    private var messages: [ReadMessagesModel] = []
+    private var viewModel = ChatViewModel()
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,17 +34,26 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Viewに追加
         view.addGestureRecognizer(tapGesture)
         
-        getMessages()
+        bindViewModel()
+        viewModel.getMessages(roomId: roomId)
     }
     
+    private func bindViewModel() {
+           viewModel.$messages
+               .receive(on: DispatchQueue.main)
+               .sink { [weak self] _ in
+                   self?.chatTableView.reloadData()
+               }
+               .store(in: &cancellables)
+       }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return viewModel.messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
-        cell.create(name: messages[indexPath.row].account.name, body: messages[indexPath.row].body)
+        cell.create(name: viewModel.messages[indexPath.row].account.name, body: viewModel.messages[indexPath.row].body)
         return cell
     }
     
@@ -57,7 +68,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             case .success(let data):
                 print("ReadMessages: \(data)")
                 // ルームの配列を保持
-                self.messages = data
+                self.viewModel.messages = data
                 // テーブルビューを更新
                 DispatchQueue.main.async {
                     self.chatTableView.reloadData()
