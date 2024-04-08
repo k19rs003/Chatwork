@@ -8,7 +8,7 @@ class ChatViewModel {
     func getMessages(roomId: Int) {
         guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else { return }
         
-        ChatworkAPIProvider.shared.api(.messages(roomId: roomId, apiToken: apiToken), modelType: [ReadMessagesModel].self) { result in
+        ChatworkAPIProvider.shared.api(.messages(roomId: roomId, apiToken: apiToken, force: 1), modelType: [ReadMessagesModel].self) { result in
             switch result {
             case .success(let data):
                 print("ReadMessages: \(data)")
