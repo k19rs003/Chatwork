@@ -71,7 +71,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func sendMessages() {
         guard let apiToken = UserDefaults.standard.string(forKey: "apiToken") else { return }
-        ChatworkAPIProvider.shared.api(.postMessages(roomId: roomId, apiToken: apiToken, postData: Data(message.utf8)), modelType: [PostMessageModel].self) { result in
+        guard let message = messageTextField.text else { return }
+        ChatworkAPIProvider.shared.api(.postMessages(roomId: roomId, apiToken: apiToken, postData: "self_unread=0&body=\(message)".data(using: .utf8)!), modelType: [PostMessageModel].self ) { result in
             switch result {
             case .success(let data):
                 print("Messages: \(data)")
